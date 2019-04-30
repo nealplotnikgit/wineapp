@@ -29,3 +29,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 https://medium.com/@davembush/adding-css-and-javascript-to-an-angular-cli-project-2b843a8283f3
 
+https://scotch.io/courses/build-your-first-angular-website/adding-an-imagelogo-in-angular
