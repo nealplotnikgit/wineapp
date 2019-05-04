@@ -7,9 +7,10 @@
 body {
   font-family: 'Lora';
   /* change ../ to assets/ */
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(47, 23, 15, 0.65))), url("assets/img/bg.jpg");
+  /* TODO fix this https://github.com/angular/angular-cli/issues/4778 */
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(47, 23, 15, 0.65))), url("/assets/img/bg.jpg");
   /* change ../ to assets/ */
-  background: linear-gradient(rgba(47, 23, 15, 0.65)), url("assets/img/bg.jpg");
+  background: linear-gradient(rgba(47, 23, 15, 0.65)), url("/assets/img/bg.jpg");
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
