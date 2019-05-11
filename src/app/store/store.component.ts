@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { WinesearchService } from '../winesearch.service';
+import { Wine } from '../model/wine';
 
 @Component({
   selector: 'wine-store',
@@ -7,7 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StoreComponent implements OnInit {
 
-  constructor() { }
+  wine: Wine;
+  constructor(wineSearchService: WinesearchService) {
+    this.wine = wineSearchService.getWineDetail(123);
+  }
 
   ngOnInit() {
   }
