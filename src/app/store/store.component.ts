@@ -10,8 +10,11 @@ import { Wine } from '../model/wine';
 export class StoreComponent implements OnInit {
 
   wine: Wine;
+  wines: Wine[];
+
   constructor(wineSearchService: WinesearchService) {
     this.wine = wineSearchService.getWineDetail(123);
+    this.wines = wineSearchService.searchWine(123, 'xy');
   }
 
   ngOnInit() {
