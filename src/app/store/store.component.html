@@ -2,11 +2,21 @@
   <div class="container">
     <div class="row">
       <div class="col-xl-9 mx-auto">
-        <div class="cta-inner text-center rounded">
+      
+        <div class="cta-inner-form text-center rounded">
+            <form #ff="ngForm" (ngSubmit)="onSubmit(ff.value)">
+                <div>Name: <input type='text' name='name' ngModel></div> 
+                <div>UPC: <input type='text' name='upc' ngModel></div> 
+                <div ngModelGroup='yearCategory'>
+                <div>Year: <input type='text' name='year' ngModel></div> 
+                <div>Category: <input type='text' name='category' ngModel></div> </div>
+                <button type='submit'>Search</button>
+              </form>
+            
           <h2 class="section-heading mb-5">
             <span class="section-heading-upper">Search paramters go here</span>
-            <span class="section-heading-lower">button</span>
           </h2>
+               
           <table class="table table-striped">
             <thead>
               <tr>

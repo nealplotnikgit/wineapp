@@ -20,4 +20,8 @@ export class StoreComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSubmit(formData: any) {
+    console.log(formData);
+  }
+
 }
