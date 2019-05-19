@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WinesearchService } from '../winesearch.service';
 import { Wine } from '../model/wine';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'wine-store',
@@ -11,17 +12,27 @@ export class StoreComponent implements OnInit {
 
   wine: Wine;
   wines: Wine[];
+  storeFormModel: FormGroup;
+
 
   constructor(wineSearchService: WinesearchService) {
     this.wine = wineSearchService.getWineDetail(123);
     this.wines = wineSearchService.searchWine(123, 'xy');
+    this.storeFormModel = new FormGroup({
+      name: new FormControl(),
+      category: new FormControl(),
+      yearUPC: new FormGroup({
+          year: new FormControl(),
+          upc: new FormControl()
+        })
+      });
   }
 
   ngOnInit() {
   }
 
   onSubmit(formData: any) {
-    console.log(formData);
+    console.log(this.storeFormModel.value);
   }
 
 }

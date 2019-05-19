@@ -4,12 +4,13 @@
       <div class="col-xl-9 mx-auto">
       
         <div class="cta-inner-form text-center rounded">
-            <form #ff="ngForm" (ngSubmit)="onSubmit(ff.value)">
-                <div>Name: <input type='text' name='name' ngModel></div> 
-                <div>UPC: <input type='text' name='upc' ngModel></div> 
-                <div ngModelGroup='yearCategory'>
-                <div>Year: <input type='text' name='year' ngModel></div> 
-                <div>Category: <input type='text' name='category' ngModel></div> </div>
+            <form [formGroup]='storeFormModel' (ngSubmit)="onSubmit()">
+                <div>Name: <input type='text' name='name' formControlName="name"></div> 
+                <div>Category: <input type='text' name='category' formControlName="category"></div> 
+                <div formGroupName='yearUPC'>
+                  <div>Year: <input type='text' name='year' formControlName='year'></div> 
+                  <div>UPC: <input type='text' name='upc' formControlName="upc"></div> 
+                </div>
                 <button type='submit'>Search</button>
               </form>
             

@@ -1,4 +1,12 @@
 <footer class="footer text-faded text-center py-5">
+    <div class="cta-inner-form text-center rounded">
+        <form #ff="ngForm" (ngSubmit)="onSubmit(ff.value)">
+            <div><input size="30" type='email' name='email' placeholder="Enter Email to receive updates" ngModel>
+              <button type='submit'>Submit</button>
+            </div> 
+           
+          </form>
+        </div>
     <div class="container">
       <p class="m-0 small">Copyright &copy; Plotnik Wines 2019</p>
     </div>

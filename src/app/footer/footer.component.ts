@@ -11,5 +11,7 @@ export class FooterComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  onSubmit(formData: any) {
+    console.log(formData);
+  }
 }
