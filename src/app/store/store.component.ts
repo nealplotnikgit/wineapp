@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WinesearchService } from '../winesearch.service';
 import { Wine } from '../model/wine';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'wine-store',
@@ -15,10 +15,17 @@ export class StoreComponent implements OnInit {
   storeFormModel: FormGroup;
 
 
-  constructor(wineSearchService: WinesearchService) {
+  constructor(wineSearchService: WinesearchService, fb: FormBuilder) {
     this.wine = wineSearchService.getWineDetail(123);
     this.wines = wineSearchService.searchWine(123, 'xy');
-    this.storeFormModel = new FormGroup({
+    this.storeFormModel = fb.group({name: [''],
+                                  category: [''],
+                                  yearUPC: fb.group({year: [''],
+                                                     upc: ['']
+                                                    })
+                                  });
+    }
+    /*  this.storeFormModel = new FormGroup({
       name: new FormControl(),
       category: new FormControl(),
       yearUPC: new FormGroup({
@@ -26,7 +33,7 @@ export class StoreComponent implements OnInit {
           upc: new FormControl()
         })
       });
-  }
+  } */
 
   ngOnInit() {
   }
