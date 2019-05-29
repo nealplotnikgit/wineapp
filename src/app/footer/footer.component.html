@@ -1,8 +1,13 @@
 <footer class="footer text-faded text-center py-5">
     <div class="cta-inner-form text-center rounded">
         <form #ff="ngForm" (ngSubmit)="onSubmit(ff.value)">
-            <div><input size="30" type='email' name='email' placeholder="Enter Email to receive updates" ngModel>
-              <button type='submit'>Submit</button>
+            <div><input size="30" name='email' placeholder="Enter Email to receive updates"
+               ngModel required email #emailAddress="ngModel" [ngModelOptions]="{updateOn:'submit'}">
+              <button type='submit' >Submit</button> <!--[disabled]="ff.invalid"-->
+            </div>
+            <div [hidden]="emailAddress.valid || emailAddress.pristine">
+              <div class='footer-error' [hidden]="!emailAddress.hasError('required')">Email is Required</div>
+              <div class='footer-error' [hidden]="!emailAddress.hasError('email')">Invalid Email Format</div>
             </div> 
            
           </form>
