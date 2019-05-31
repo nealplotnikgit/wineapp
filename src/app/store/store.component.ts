@@ -1,8 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { WinesearchService } from '../winesearch.service';
 import { Wine } from '../model/wine';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
+function categoryValidator(control: FormControl): {[key: string]: any} {
+  const value: string = control.value || '';
+  let valid = false;
+  if (value === 'Red' || value === 'White') {
+    valid = true;
+  }
+  return valid ? null : {categoryError: {description: 'Category may be Red or White'}};
+
+}
 @Component({
   selector: 'wine-store',
   templateUrl: './store.component.html',
@@ -18,13 +27,15 @@ export class StoreComponent implements OnInit {
   constructor(wineSearchService: WinesearchService, fb: FormBuilder) {
     this.wine = wineSearchService.getWineDetail(123);
     this.wines = wineSearchService.searchWine(123, 'xy');
-    this.storeFormModel = fb.group({name: [''],
-                                  category: [''],
+    this.storeFormModel = fb.group({ wineName: ['', Validators.required],
+                                  category: ['', categoryValidator],
                                   yearUPC: fb.group({year: [''],
                                                      upc: ['']
                                                     })
                                   });
     }
+
+    get f() { return this.storeFormModel.controls; }
     /*  this.storeFormModel = new FormGroup({
       name: new FormControl(),
       category: new FormControl(),
@@ -39,7 +50,12 @@ export class StoreComponent implements OnInit {
   }
 
   onSubmit(formData: any) {
-    console.log(this.storeFormModel.value);
+    if (this.storeFormModel.valid) {
+      console.log(this.storeFormModel.value);
+    } else
+    {
+      console.log('form was invalid');
+    }
   }
 
 }

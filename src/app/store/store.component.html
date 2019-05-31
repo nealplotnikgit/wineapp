@@ -5,8 +5,14 @@
       
         <div class="cta-inner-form text-center rounded">
             <form [formGroup]='storeFormModel' (ngSubmit)="onSubmit()">
-                <div>Name: <input type='text' name='name' formControlName="name"></div> 
+                <div>Name: <input type='text' class='form-control' name='wineName' formControlName="wineName" [ngClass]="{'is-invalid':f.wineName.errors}"></div> 
+                <div *ngIf='storeFormModel.controls.wineName.errors'>
+                  <div *ngIf="f.wineName.errors.required" ><span  style='color:red'>Name is required</span></div>
+                </div>
                 <div>Category: <input type='text' name='category' formControlName="category"></div> 
+                <div *ngIf='storeFormModel.controls.category.errors'>
+                  <div *ngIf="f.category.errors.categoryError" ><span  style='color:red'>{{f.category.errors.categoryError.description}}</span></div>
+                </div>
                 <div formGroupName='yearUPC'>
                   <div>Year: <input type='text' name='year' formControlName='year'></div> 
                   <div>UPC: <input type='text' name='upc' formControlName="upc"></div> 
