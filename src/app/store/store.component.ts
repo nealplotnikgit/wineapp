@@ -3,6 +3,20 @@ import { WinesearchService } from '../winesearch.service';
 import { Wine } from '../model/wine';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
+function searchGroupValidator(control: FormControl): {[key: string]: any} {
+  if (control === null) {
+    return null; // these need to return null or an error message
+  }
+  const year: string = control.get('year').value || '';
+  console.log('year' + year);
+  const UPC: string = control.get('upc').value || '';
+  console.log('UPC' + UPC);
+  let valid = true;
+  if (year === '' && UPC === '') {
+    valid = false;
+  }
+  return valid ? null : {searchGroupError: {description: 'Either year OR UPC must be chosen'}};
+}
 function categoryValidator(control: FormControl): {[key: string]: any} {
   const value: string = control.value || '';
   let valid = false;
@@ -10,8 +24,8 @@ function categoryValidator(control: FormControl): {[key: string]: any} {
     valid = true;
   }
   return valid ? null : {categoryError: {description: 'Category may be Red or White'}};
-
 }
+
 @Component({
   selector: 'wine-store',
   templateUrl: './store.component.html',
@@ -26,12 +40,11 @@ export class StoreComponent implements OnInit {
 
   constructor(wineSearchService: WinesearchService, fb: FormBuilder) {
     this.wine = wineSearchService.getWineDetail(123);
-    this.wines = wineSearchService.searchWine(123, 'xy');
+    this.wines = wineSearchService.searchWine(123, 'Fred wine');
+
     this.storeFormModel = fb.group({ wineName: ['', Validators.required],
                                   category: ['', categoryValidator],
-                                  yearUPC: fb.group({year: [''],
-                                                     upc: ['']
-                                                    })
+                                  yearUPC: fb.group({year: [''], upc: ['']}, { validator: searchGroupValidator, updateOn: 'submit'})
                                   });
     }
 
