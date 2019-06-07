@@ -3,13 +3,15 @@ import { WinesearchService } from '../winesearch.service';
 import { Wine } from '../model/wine';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
-function searchGroupValidator(control: FormControl): {[key: string]: any} {
+function searchValidator(control: FormControl): {[key: string]: any} {
   if (control === null) {
     return null; // these need to return null or an error message
   }
-  const year: string = control.get('year').value || '';
+  const year: string = control.get('yearUPC').get('year').value || '';
+  const UPC: string = control.get('yearUPC').get('upc').value || '';
+  // const year: string = yearUPC.get('year').value || '';
   console.log('year' + year);
-  const UPC: string = control.get('upc').value || '';
+  // const UPC: string = control.get('upc').value || '';
   console.log('UPC' + UPC);
   let valid = true;
   if (year === '' && UPC === '') {
@@ -44,8 +46,8 @@ export class StoreComponent implements OnInit {
 
     this.storeFormModel = fb.group({ wineName: ['', Validators.required],
                                   category: ['', categoryValidator],
-                                  yearUPC: fb.group({year: [''], upc: ['']}, { validator: searchGroupValidator, updateOn: 'submit'})
-                                  });
+                                  yearUPC: fb.group({year: [''], upc: ['']})
+                                  }, { validator: [searchValidator], updateOn: 'submit'});
     }
 
     get f() { return this.storeFormModel.controls; }
@@ -65,8 +67,7 @@ export class StoreComponent implements OnInit {
   onSubmit(formData: any) {
     if (this.storeFormModel.valid) {
       console.log(this.storeFormModel.value);
-    } else
-    {
+    } else {
       console.log('form was invalid');
     }
   }
