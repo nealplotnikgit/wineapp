@@ -28,7 +28,8 @@ export class WinesearchService extends WinesearchServiceInterface {
 
 }
 
-const wines = [
+
+  const wines = [
   { upc: 0,
     name: 'test',
     vintageYear: 1996,
