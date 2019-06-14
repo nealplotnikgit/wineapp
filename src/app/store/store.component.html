@@ -21,32 +21,35 @@
               </form>
             
           <h2 class="section-heading mb-5">
-            <span class="section-heading-upper">Search paramters go here</span>
+            <span class="section-heading-upper">Please search carefully</span>
           </h2>
-               
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">UPC</th>
-                <th scope="col">Wine</th>
-                <th scope="col">Price</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let wine of wines; let i = index">
-                 <th scope="row">{{i}}</th>
-                 <td>{{wine.upc}}</td>
-                 <td>{{wine.name}}</td>
-                 <td>{{wine.price|currency}}</td>
-              </tr>
-            </tbody>
-          </table>
+          
+          <ng-container *ngIf="wineResult">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">UPC</th>
+                  <th scope="col">Wine</th>
+                  <th scope="col">Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let wine of wines; let i = index">
+                  <th scope="row">{{i}}</th>
+                  <td>{{wine.upc}}</td>
+                  <td>{{wine.name}}</td>
+                  <td>{{wine.price|currency}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </ng-container>
         </div>
       </div>
     </div>
   </div>
 </section>
+
 
 
 <section class="page-section cta">
@@ -119,5 +122,4 @@
     </div>
   </div>
 </section>
-
 

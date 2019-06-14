@@ -37,12 +37,14 @@ export class StoreComponent implements OnInit {
 
   wine: Wine;
   wines: Wine[];
+  service: WinesearchService;
   storeFormModel: FormGroup;
 
 
   constructor(wineSearchService: WinesearchService, fb: FormBuilder) {
-    this.wine = wineSearchService.getWineDetail(123);
-    this.wines = wineSearchService.searchWine(123, 'Fred wine');
+    this.service = wineSearchService;
+    this.wine = this.service.getWineDetail(123);
+    // this.wines = this.service.searchWine(123, 'Fred wine');
 
     this.storeFormModel = fb.group({ wineName: ['', Validators.required],
                                   category: ['', categoryValidator],
@@ -60,6 +62,12 @@ export class StoreComponent implements OnInit {
         })
       });
   } */
+   get wineResult() {
+    if (this.wines === undefined || this.wines.length === 0) {
+      return false;
+    }
+    return true;
+  }
 
   ngOnInit() {
   }
@@ -70,6 +78,7 @@ export class StoreComponent implements OnInit {
     } else {
       console.log('form was invalid');
     }
+    this.wines = this.service.searchWine(1, 'test');
   }
 
 }
