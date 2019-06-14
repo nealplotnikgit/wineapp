@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Wine} from './model/wine';
+import { HttpClient } from '@angular/common/http';
 
 
 export abstract class WinesearchServiceInterface {
@@ -11,15 +12,20 @@ export abstract class WinesearchServiceInterface {
   providedIn: 'root'
 })
 export class WinesearchService extends WinesearchServiceInterface {
+  serviceClient: HttpClient = null;
 
-  constructor() {
+  constructor(private httpClient: HttpClient) {
     super();
+    this.serviceClient = httpClient;
   }
 
   getWineDetail(wineId: number): Wine {
+    // detail?id=123
     return wines.find(p => wineId === p.upc);
   }
   searchWine(wineID: number, name: string): Wine[] {
+    // search?id=123?name  year category
+
     if (wineID == null && name == null) {
        throw new Error('Missing Required Inputs');
     }
