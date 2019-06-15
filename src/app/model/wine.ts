@@ -1,4 +1,15 @@
-export class Wine {
+
+export interface WineInterface {
+ upc: number;  // 12 digit id
+ name: string;
+ price: number;
+ cost: number;
+ vintageYear: number;
+ vintner: string;
+ category: string;
+}
+
+export class Wine implements WineInterface {
    upc: number;  // 12 digit id
    name: string;
    price: number;

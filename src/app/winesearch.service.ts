@@ -26,10 +26,15 @@ export class WinesearchService extends WinesearchServiceInterface {
   searchWine(wineID: number, name: string): Wine[] {
     // search?id=123?name  year category
 
+
     if (wineID == null && name == null) {
        throw new Error('Missing Required Inputs');
     }
-    return wines;
+
+    // const result$ = this.serviceClient.get<Wine[]>('/search/123');
+    // return result$;
+    // )
+     return wines;
   }
 
 }
