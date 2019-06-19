@@ -35,3 +35,34 @@ ular
 https://github.com/angular/angular/issues/11404
 
 https://stackoverflow.com/questions/53143983/angular-7-and-cant-bind-to-routerlink-since-it-isnt-a-known-property-of-a
+
+https://www.techiediaries.com/angular-by-example-httpclient-get/
+// other Alternative to get data
+    The async pipe and Observables
+In our example, We can access the data returned by the get() method in two ways.
+
+Subscribe to the returned Observable, i.e:
+
+     get_products(){
+        this.httpClient.get(this.baseUrl + '/products').subscribe((res : any[])=>{
+            console.log(res);
+            this.products = res;
+        });
+    }
+Or use the async pipe with the returned Observable and iterate directly over data in the template. Let's see how in more details.
+
+First, you need to create an Observable using the following:
+
+     private productsObservable : Observable<any[]> ; 
+Next, call the get() method and assign the result to productsObservable:
+
+     this.productsObservable = this.httpClient.get(this.baseUrl + '/products');
+Finally, in your template:
+
+      <li *ngFor="let product of productsObservable | async" >
+        -- id: {{product.id}}
+        -- name: {{product.name}}
+        -- cost: {{product.cost}}
+        -- quantity: {{product.quantity}}
+      </li>
+    
