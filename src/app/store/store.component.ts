@@ -78,7 +78,13 @@ export class StoreComponent implements OnInit {
     } else {
       console.log('form was invalid');
     }
-    this.wines = this.service.searchWine(1, 'test');
+
+    /*this.wines = this.service.searchWine(1, 'test');*/
+
+    this.service.searchWine(1, 'test').subscribe((res: Wine[]) => {
+      console.log(res);
+      this.wines = res;
+      });
   }
 
 }

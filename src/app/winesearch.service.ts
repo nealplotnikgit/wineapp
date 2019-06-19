@@ -4,8 +4,8 @@ import { HttpClient } from '@angular/common/http';
 
 
 export abstract class WinesearchServiceInterface {
-  abstract getWineDetail(wineID: number): Wine;
-  abstract searchWine(wineID: number, name: string): Wine[];
+  abstract getWineDetail(wineID: number): any;
+  abstract searchWine(wineID: number, name: string): any;
 }
 
 @Injectable({
@@ -19,22 +19,14 @@ export class WinesearchService extends WinesearchServiceInterface {
     this.serviceClient = httpClient;
   }
 
-  getWineDetail(wineId: number): Wine {
+  getWineDetail(wineId: number): any {
     // detail?id=123
     return wines.find(p => wineId === p.upc);
   }
-  searchWine(wineID: number, name: string): Wine[] {
+  searchWine(wineID: number, name: string): any {
     // search?id=123?name  year category
 
-
-    if (wineID == null && name == null) {
-       throw new Error('Missing Required Inputs');
-    }
-
-    // const result$ = this.serviceClient.get<Wine[]>('/search/123');
-    // return result$;
-    // )
-     return wines;
+    this.serviceClient.get('/search/123');
   }
 
 }
