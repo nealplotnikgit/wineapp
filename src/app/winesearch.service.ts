@@ -13,7 +13,7 @@ export abstract class WinesearchServiceInterface {
 })
 export class WinesearchService extends WinesearchServiceInterface {
   serviceClient: HttpClient = null;
-
+  baseUrl = 'localhost:8080';
   constructor(private httpClient: HttpClient) {
     super();
     this.serviceClient = httpClient;
@@ -26,7 +26,7 @@ export class WinesearchService extends WinesearchServiceInterface {
   searchWine(wineID: number, name: string): any {
     // search?id=123?name  year category
 
-    this.serviceClient.get('/search/123');
+    return this.serviceClient.get(this.baseUrl + '/search/123');
   }
 
 }
