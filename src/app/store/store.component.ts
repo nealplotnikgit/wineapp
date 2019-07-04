@@ -84,6 +84,7 @@ export class StoreComponent implements OnInit {
     this.service.searchWine(1, 'test').subscribe((res: Wine[]) => {
       console.log(res);
       this.wines = res;
+      console.log('called service');
       });
   }
 

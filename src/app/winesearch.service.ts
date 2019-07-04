@@ -13,7 +13,7 @@ export abstract class WinesearchServiceInterface {
 })
 export class WinesearchService extends WinesearchServiceInterface {
   serviceClient: HttpClient = null;
-  //baseUrl = 'localhost:8080';
+  // baseUrl = 'localhost:8080';
   constructor(private httpClient: HttpClient) {
     super();
     this.serviceClient = httpClient;
@@ -26,7 +26,9 @@ export class WinesearchService extends WinesearchServiceInterface {
   searchWine(wineID: number, name: string): any {
     // search?id=123?name  year category
 
-    return this.serviceClient.get(/*this.baseUrl + */'/search/123');
+   return this.serviceClient.get(/*this.baseUrl+*/'/search/123');
+   // https://mockoon.com/
+  // return this.serviceClient.get('http://www.mocky.io/v2/5d12d4220e00002c17b4a0a7');
   }
 
 }
