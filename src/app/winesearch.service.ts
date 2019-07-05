@@ -25,8 +25,8 @@ export class WinesearchService extends WinesearchServiceInterface {
   }
   searchWine(wineID: number, name: string): any {
     // search?id=123?name  year category
-
-   return this.serviceClient.get(/*this.baseUrl+*/'/search/123');
+    console.log('service 3');
+   return this.serviceClient.get(/*this.baseUrl+*/'/search?id=82491091026');
    // https://mockoon.com/
   // return this.serviceClient.get('http://www.mocky.io/v2/5d12d4220e00002c17b4a0a7');
   }
