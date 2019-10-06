@@ -72,7 +72,8 @@ export class StoreComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit(formData: any) {
+  // onSubmit(formData: any) {
+  onSubmit() {
     if (this.storeFormModel.valid) {
       console.log(this.storeFormModel.value);
     } else {
