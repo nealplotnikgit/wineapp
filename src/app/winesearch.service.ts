@@ -5,7 +5,8 @@ import { HttpClient } from '@angular/common/http';
 
 export abstract class WinesearchServiceInterface {
   abstract getWineDetail(wineID: number): any;
-  abstract searchWine(wineID: number, name: string): any;
+  abstract searchWineFuture(wineID: number, name: string): any;
+  abstract searchWine(name: string): any;
 }
 
 @Injectable({
@@ -23,7 +24,15 @@ export class WinesearchService extends WinesearchServiceInterface {
     // detail?id=123
     return wines.find(p => wineId === p.upc);
   }
-  searchWine(wineID: number, name: string): any {
+
+  searchWine(name: string): any {
+    // replace with new API - search by name, match any containing and ignore case
+    console.log('search by name');
+   return this.serviceClient.get(/*this.baseUrl+*/'/wines/name/' + name);
+  }
+
+
+  searchWineFuture(wineID: number, name: string): any {
     // search?id=123?name  year category
     console.log('service 3');
    return this.serviceClient.get(/*this.baseUrl+*/'/search?id=82491091026');

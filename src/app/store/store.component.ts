@@ -81,8 +81,7 @@ export class StoreComponent implements OnInit {
     }
 
     /*this.wines = this.service.searchWine(1, 'test');*/
-
-    this.service.searchWine(1, 'test').subscribe((res: Wine[]) => {
+    this.service.searchWine(this.storeFormModel.get('wineName').value).subscribe((res: Wine[]) => {
       console.log(res);
       this.wines = res;
       console.log('called service');
