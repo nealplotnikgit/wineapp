@@ -6,7 +6,7 @@ export const environment = {
   production: false,
 // in local send request to local server, it will use proxy to go to 8080
   wineServiceURL: 'http://localhost:4200',
-  wineAppEnv: 'local'
+  wineAppEnv: 'dev'
 };
 
 /*

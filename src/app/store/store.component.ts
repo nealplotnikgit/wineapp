@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WinesearchService } from '../winesearch.service';
 import { Wine } from '../model/wine';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { environment} from '../../environments/environment';
 
 function searchValidator(control: FormControl): {[key: string]: any} {
   if (control === null) {
@@ -39,6 +40,7 @@ export class StoreComponent implements OnInit {
   wines: Wine[];
   service: WinesearchService;
   storeFormModel: FormGroup;
+  wineAppEnv = environment.wineAppEnv;
 
 
   constructor(wineSearchService: WinesearchService, fb: FormBuilder) {
