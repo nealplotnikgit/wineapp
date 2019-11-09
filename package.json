@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json",
-    "startqa": "ng serve --proxy-config proxy.conf.qa.json --configuration=qa --verbose=true",
+    "startqa": "ng serve --proxy-config proxy.conf.qa.json",
     "build": "ng build",
     "buildprod": "ng build --prod",
     "buildqa": "ng build --configuration=qa",
