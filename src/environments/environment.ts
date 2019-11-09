@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+// in local send request to local server, it will use proxy to go to 8080
+  wineServiceURL: 'http://localhost:4200',
+  wineAppEnv: 'local'
 };
 
 /*

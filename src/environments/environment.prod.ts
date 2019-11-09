@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  wineServiceURL: 'http://winemanagementservice.cfapps.io',
+  wineAppEnv: 'prod'
 };
