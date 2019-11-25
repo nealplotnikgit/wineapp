@@ -10,10 +10,6 @@ function searchValidator(control: FormControl): {[key: string]: any} {
   }
   const year: string = control.get('yearUPC').get('year').value || '';
   const UPC: string = control.get('yearUPC').get('upc').value || '';
-  // const year: string = yearUPC.get('year').value || '';
-  console.log('year' + year);
-  // const UPC: string = control.get('upc').value || '';
-  console.log('UPC' + UPC);
   let valid = true;
   if (year === '' && UPC === '') {
     valid = false;
@@ -42,7 +38,6 @@ export class StoreComponent implements OnInit {
   storeFormModel: FormGroup;
   wineAppEnv = environment.wineAppEnv;
 
-
   constructor(wineSearchService: WinesearchService, fb: FormBuilder) {
     this.service = wineSearchService;
     this.wine = this.service.getWineDetail(123);
@@ -52,7 +47,9 @@ export class StoreComponent implements OnInit {
                                   category: ['', categoryValidator],
                                   yearUPC: fb.group({year: [''], upc: ['']})
                                   }, { validator: [searchValidator], updateOn: 'submit'});
-    }
+    this.storeFormModel.get('category').disable();
+
+  }
 
     get f() { return this.storeFormModel.controls; }
     /*  this.storeFormModel = new FormGroup({
