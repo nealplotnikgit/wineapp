@@ -78,3 +78,4 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+import 'intl';  // Run `npm install --save intl`.   added for phantomJS. might need more
