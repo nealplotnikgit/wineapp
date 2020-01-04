@@ -11,6 +11,8 @@ import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
 import { StoreComponent } from './store/store.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AdminComponent } from './admin/admin.component';
+import { AddwineComponent } from './addwine/addwine.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     ProductsComponent,
     StoreComponent,
+    AdminComponent,
+    AddwineComponent,
   ],
   imports: [
     AppRoutingModule,
